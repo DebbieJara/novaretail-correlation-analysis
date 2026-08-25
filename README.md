@@ -72,22 +72,6 @@ Boxplot comparing annual revenue distribution between premium and non-premium cu
 
 Python · pandas · NumPy · Seaborn · Matplotlib · SciPy
 
-## How to run
-
-**Google Colab**
-
-Click the badge above and run the cells in order. The dataset is already included in the repository.
-
-**Local Jupyter**
-
-```bash
-git clone https://github.com/DebbieJara/novaretail-correlation-analysis.git
-pip install pandas numpy matplotlib seaborn scipy
-jupyter notebook
-```
-
-Run all cells in order from the start.
-
 ## Repository structure
 
 ```text
