@@ -1,67 +1,106 @@
-# 📊 NovaRetail+ — Análisis Correlacional de Comportamiento del Cliente
+# NovaRetail+ Customer Behavior Correlation Analysis
 
-Análisis correlacional aplicado a una plataforma de comercio electrónico latinoamericana con millones de usuarios. El proyecto identifica qué factores del comportamiento del cliente están más fuertemente asociados con el ingreso anual generado.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DebbieJara/novaretail-correlation-analysis/blob/main/NovaRetail_Analysis.ipynb)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![pandas](https://img.shields.io/badge/pandas-150458?style=flat&logo=pandas&logoColor=white)
 
-**Herramientas:** Python · Pandas · NumPy · Seaborn · Matplotlib · SciPy
+**Business question:** Correlation analysis applied to a Latin American e-commerce platform with millions of users. The project identifies which customer behavior factors are most strongly associated with annual revenue generated.
 
-## 🔍 Hallazgos Principales
+## Context
 
-**Factor más asociado con ingreso anual**
-- `compras_mes` presenta una correlación de 0.97 con `ingreso_anual`, confirmada como estable con Pearson y Spearman.
-- Se identificó un posible riesgo de colinealidad — ambas variables podrían estar midiendo el mismo fenómeno.
+The dataset covers 15,000 customer behavior records from a Latin American e-commerce platform.
 
-**Segmento premium**
-- Los clientes con suscripción premium tienden a generar mayor ingreso anual (punto biserial: 0.093, p-value: 0.000).
-- El boxplot confirma una mediana de ingreso más alta en el grupo premium, con mayor dispersión.
+## Process
 
-**Variables sin asociación relevante**
-- `edad`, `nivel_ingreso` y `satisfaccion` muestran correlaciones cercanas a 0 con `ingreso_anual` — no son factores determinantes.
+Data preparation (type correction, validation of binary and categorical variables), a correlation heatmap for an overview of relationships between all numeric variables, scatterplots to visually assess linearity and outliers in key pairs, Pearson and Spearman correlation with method justification, point-biserial correlation between binary and numeric variables, and Cramér's V for association between categorical variables.
 
-## 📈 Visualizaciones
+## Key findings
 
-| Heatmap de correlación | Scatterplots clave | Boxplot premium |
-|---|---|---|
-| ![heatmap](images/heatmap.png) | ![scatterplots](images/scatterplots.png) | ![boxplot](images/boxplot.png) |
+### Factor most associated with annual revenue
 
-## 💡 Recomendaciones
+`compras_mes` (monthly purchases) shows a 0.97 correlation with `ingreso_anual` (annual revenue), confirmed as stable with both Pearson and Spearman. A potential collinearity risk was identified: both variables could be measuring the same underlying phenomenon.
 
-- Invertir en estrategias que incentiven la frecuencia de compra, como ofertas por tiempo limitado.
-- Desarrollar programas de lealtad dirigidos al segmento premium para retener y expandir ese grupo.
-- Explorar la relación directa entre `gasto_publicidad_dirigida` e `ingreso_anual` en un análisis posterior.
+### Premium segment
 
-## 📂 Dataset
+Customers with a premium subscription tend to generate higher annual revenue (point-biserial: 0.093, p-value: 0.000). The boxplot confirms a higher median revenue in the premium group, with greater dispersion.
 
-| Archivo | Descripción |
+### Variables with no relevant association
+
+`edad` (age), `nivel_ingreso` (income level), and `satisfaccion` (satisfaction) show correlations close to 0 with annual revenue: they are not determining factors.
+
+## Visualizations
+
+![Correlation heatmap](images/heatmap.png)
+
+Correlation heatmap: overview of relationships between all numeric variables.
+
+![Key scatterplots](images/scatterplots.png)
+
+Scatterplots evaluating linearity and outliers in key variable pairs.
+
+![Premium segment boxplot](images/boxplot.png)
+
+Boxplot comparing annual revenue distribution between premium and non-premium customers.
+
+## Recommendations
+
+- Invest in strategies that incentivize purchase frequency, such as limited-time offers.
+- Develop loyalty programs targeted at the premium segment to retain and expand that group.
+- Explore the direct relationship between `gasto_publicidad_dirigida` (targeted advertising spend) and annual revenue in a follow-up analysis.
+
+## Technical details
+
+### Dataset
+
+| File | Description |
 |---|---|
-| `novaretail_comportamiento_clientes_2024.csv` | 15,000 registros de comportamiento de clientes |
+| novaretail_comportamiento_clientes_2024.csv | 15,000 customer behavior records |
 
-## 🔍 Etapas del Análisis
+### Analytical workflow
 
-1. **Preparación de datos** — corrección de tipos, validación de variables binarias y categóricas
-2. **Heatmap de correlación** — visión general de relaciones entre todas las variables numéricas
-3. **Scatterplots** — evaluación visual de linealidad y outliers en pares clave
-4. **Pearson & Spearman** — correlación entre variables numéricas con justificación del método
-5. **Punto biserial** — correlación entre variables binarias y numéricas
-6. **V de Cramér** — asociación entre variables categóricas
-7. **Hallazgos y recomendaciones** — conclusiones con evidencia visual, numérica e implicaciones de negocio
+| Step | Description |
+|---|---|
+| 1. Data preparation | Type correction, validation of binary and categorical variables |
+| 2. Correlation heatmap | Overview of relationships between all numeric variables |
+| 3. Scatterplots | Visual assessment of linearity and outliers in key pairs |
+| 4. Pearson & Spearman | Correlation between numeric variables, with method justification |
+| 5. Point-biserial | Correlation between binary and numeric variables |
+| 6. Cramér's V | Association between categorical variables |
+| 7. Findings & recommendations | Conclusions supported by visual evidence, statistics, and business implications |
 
-## ▶️ Cómo ejecutar
+## Tools
+
+Python · pandas · NumPy · Seaborn · Matplotlib · SciPy
+
+## How to run
 
 **Google Colab**
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DebbieJara/novaretail-correlation-analysis/blob/main/NovaRetail_Analysis.ipynb)
+Click the badge above and run the cells in order. The dataset is already included in the repository.
 
-Haz clic en el badge de arriba y ejecuta las celdas en orden — el dataset ya está en el repositorio.
+**Local Jupyter**
 
-**Jupyter local**
 ```bash
 git clone https://github.com/DebbieJara/novaretail-correlation-analysis.git
 pip install pandas numpy matplotlib seaborn scipy
 jupyter notebook
 ```
 
-Se recomienda ejecutar todas las celdas en orden desde el inicio.
+Run all cells in order from the start.
 
-## 👩‍💻 Autora
+## Repository structure
 
-Debbie Jara · [GitHub](https://github.com/DebbieJara) · Data Analyst en formación
+```text
+novaretail-correlation-analysis/
+├── README.md
+├── NovaRetail_Analysis.ipynb
+└── images/
+    ├── heatmap.png
+    ├── scatterplots.png
+    └── boxplot.png
+```
+
+---
+
+By Deborah Jara | Business Intelligence · Data Analytics | Mexico
+[LinkedIn](https://www.linkedin.com/in/deborahjara) · [GitHub](https://github.com/DebbieJara)
