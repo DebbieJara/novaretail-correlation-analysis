@@ -18,11 +18,19 @@ Data preparation (type correction, validation of binary and categorical variable
 
 ### Factor most associated with annual revenue
 
-`compras_mes` (monthly purchases) shows a 0.97 correlation with `ingreso_anual` (annual revenue), confirmed as stable with both Pearson and Spearman. A potential collinearity risk was identified: both variables could be measuring the same underlying phenomenon.
+`compras_mes` (monthly purchases) shows a 0.97 correlation with `ingreso_anual` (annual revenue), confirmed as stable with both Pearson and Spearman. A potential collinearity risk was identified: both variables could be measuring the same underlying phenomenon, since it's unclear whether annual revenue is calculated directly from monthly purchases.
+
+Setting that relationship aside, `visitas_mes` (monthly visits) emerges as the strongest independent factor associated with annual revenue (Pearson 0.337, Spearman 0.321). This is likely the more actionable driver for business strategy, since it isn't confounded by the same collinearity risk.
 
 ### Premium segment
 
-Customers with a premium subscription tend to generate higher annual revenue (point-biserial: 0.093, p-value: 0.000). The boxplot confirms a higher median revenue in the premium group, with greater dispersion.
+Customers with a premium subscription tend to generate higher annual revenue (point-biserial: 0.093, p-value: 0.000). The boxplot confirms a higher median revenue in the premium group, with greater dispersion. Premium members also show lower churn: `miembro_premium` and `abandono` have a negative correlation (-0.12).
+
+Churn itself shows no significant relationship with annual revenue (point-biserial: -0.003, p-value: 0.729): there's no evidence that churn is associated with how much revenue a customer generates.
+
+### Other notable relationship
+
+`visitas_mes` and `gasto_publicidad_dirigida` (targeted advertising spend) show the strongest positive correlation in the entire heatmap (0.58), suggesting that targeted ad spend is associated with higher user activity on the platform.
 
 ### Variables with no relevant association
 
